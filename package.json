@@ -1,0 +1,27 @@
+{
+  "name": "compadr-node-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "lodash": "^4.3.0",
+    "pg": "^4.4.4",
+    "tsd": "^0.6.5"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.3",
+    "redis": "^2.4.2",
+    "request": "^2.69.0"
+  }
+}
