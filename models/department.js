@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var departmentSchema = mongoose.Schema({
+var departmentSchema = new mongoose.Schema({
     name: String,
     description: String
 });

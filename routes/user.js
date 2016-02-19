@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var User = require('../models/user');
+var jwt = require('jwt-simple');
 
 module.exports = function (app) {
 
@@ -9,11 +10,25 @@ module.exports = function (app) {
     /* Create */
     app.post(controllerUrl, function (req, res) {
         var user = new User(req.body);
+
+        var payload = {
+            iss: req.hostname,
+            sub: user._id
+        };
+
+        var token = jwt.encode(payload, 'secret');
+
         user.save(function (err) {
             if (err) {
                 res.json({ info: 'error adding ' + modelName, error: err });
             } else {
-                res.json({ info: modelName + ' added successfully' });
+                res.json({
+                    info: modelName + ' added successfully',
+                    data: {
+                        user: user,
+                        token: token
+                    }
+                });
             }
         });
 
@@ -21,6 +36,18 @@ module.exports = function (app) {
     
     /* Read */
     app.get(controllerUrl, function (req, res) {
+
+        if (!req.headers.authorization) {
+            return res.status(401).json({ info: 'Not Authorized' });
+        }
+
+        var token = req.headers.authorization.split(' ')[1]; // Bearer token
+        var payload = jwt.decode(token, 'secret');
+
+        if (!payload.sub) {
+            res.status(401).json({info: 'Authentication failed'});
+        }
+
         User.find(function (err, users) {
             if (err) {
                 res.json({ info: 'error finding ' + modelName, error: err });

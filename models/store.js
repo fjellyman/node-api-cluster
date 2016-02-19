@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var storeSchema = mongoose.Schema({
+var storeSchema = new mongoose.Schema({
     name: String,
     street: String,
     city: String,
