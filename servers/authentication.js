@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({
 var cors = require('cors');
 app.use(cors());
 
-var users = require('../routes/user.js')(app);
+var authentication = require('../routes/authentication.js')(app);
 
-var port = 3010;
+var port = 3040;
 
 app.listen(port, function () {
-  console.log('User Server Port:', port);
+    console.log('Authenction Server Port:', port);
 });

@@ -12,6 +12,10 @@ userSchema.methods.toJSON = function () {
     return user;
 };
 
+userSchema.methods.isPassword = function (password, callback) {
+    bcrypt.compare(password, this.password, callback);
+};
+
 module.exports = mongoose.model('User', userSchema);
 
 // middleware for improving on password saving
@@ -27,15 +31,15 @@ userSchema.pre('save', function (done) {
         if (err) {
             return done(err);
         }
-        
+
         bcrypt.hash(user.password, salt, function (err, hash) {
             if (err) {
-                return done(err);  
+                return done(err);
             }
-            
+
             user.password = hash;
-            
-            done(); 
+
+            done();
         });
     });
 });

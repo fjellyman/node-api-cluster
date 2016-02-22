@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var User = require('../models/user');
 var jwt = require('jwt-simple');
+var tokenService = require('../services/token');
 
 module.exports = function (app) {
 
@@ -11,17 +12,12 @@ module.exports = function (app) {
     app.post(controllerUrl, function (req, res) {
         var user = new User(req.body);
 
-        var payload = {
-            iss: req.hostname,
-            sub: user._id
-        };
-
-        var token = jwt.encode(payload, 'secret');
-
         user.save(function (err) {
             if (err) {
                 res.json({ info: 'error adding ' + modelName, error: err });
             } else {
+                var token = tokenService.create(user._id);
+                
                 res.json({
                     info: modelName + ' added successfully',
                     data: {

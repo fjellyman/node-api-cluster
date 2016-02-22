@@ -15,7 +15,7 @@
       "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
     },
     "node/node.d.ts": {
-      "commit": "39ced332d31a4c9cdfb4d568e8ef69b18932b6eb"
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     },
     "orchestrator/orchestrator.d.ts": {
       "commit": "85af69c91599a6c904618545f0613970e1ff3f64"
@@ -31,6 +31,21 @@
     },
     "bcrypt/bcrypt.d.ts": {
       "commit": "39ced332d31a4c9cdfb4d568e8ef69b18932b6eb"
+    },
+    "jwt-simple/jwt-simple.d.ts": {
+      "commit": "d91e004c971a92ffff3bd20d270314957bda5861"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "d91e004c971a92ffff3bd20d270314957bda5861"
+    },
+    "express/express.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "mime/mime.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
     }
   }
 }
